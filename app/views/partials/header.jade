@@ -1,0 +1,29 @@
+nav.navbar.navbar-default.navbar-fixed-top.navbar-inverse
+    .container-fluid
+        .navbar-header
+            button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+                span.sr-only Toggle navigation
+                span.icon-bar
+                span.icon-bar
+                span.icon-bar
+            a.navbar-brand(href='/') Sign In Demo
+        .navbar-collapse.collapse
+            ul.nav.navbar-nav
+            ul.nav.navbar-nav.navbar-right
+                if !user
+                    li
+                        a(href='/signup') Sign Up
+                    li
+                        a(href='/signin') Sign In
+                else
+                    li.dropdown
+                        a(href="#",data-toggle="dropdown",role="button").dropdown-toggle
+                            span.glyphicon.glyphicon-user
+                            | &nbsp; #{user.firstname} #{user.lastname}
+                            span.caret
+                            ul(role="menu").dropdown-menu
+                                li
+                                    a(href='/profile') Profile
+                                li.divider
+                                li
+                                    a(href='/logout') Sign Out

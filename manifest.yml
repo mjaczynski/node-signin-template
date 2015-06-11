@@ -1,0 +1,8 @@
+applications:
+- name:    signin
+  host:    signin-mja
+  memory:  128M
+  command: node server.js
+  services:
+  - sendgrid-signin
+  - mongo-signin

@@ -1,0 +1,65 @@
+
+extends layout
+
+block content
+	#profile-container.well.span4
+		- var hasProvider = typeof user.provider === 'string'
+
+		form( method="post")#profile-form.form-horizontal
+
+			.form-group
+				.col-xs-offset-2.col-xs-10
+					legend Profile Settings
+
+			.form-group
+				label(for="firstname").control-label.col-xs-2 First name
+				.col-xs-10
+					input(type="text", name="firstname",placeholder="#{user.provider}",disabled=hasProvider,
+					required,value="#{user.firstname}")#firstname.form-control
+
+			.form-group
+				label(for="lastname").control-label.col-xs-2 Last name
+				.col-xs-10
+					input(type="text", name="lastname",placeholder="Last name",disabled=hasProvider,
+					required,value="#{user.lastname}")#lastname.form-control
+
+			.form-group
+				label(for="username").control-label.col-xs-2 User name
+				.col-xs-10
+					input(type="text", name="username",placeholder="User name",required,
+					pattern=".{5,10}", title="5 to 10 characters",disabled, hidden=hasProvider,
+					value="#{user.username}")#username.form-control
+
+			.form-group
+				label(for="email").control-label.col-xs-2 Email
+				.col-xs-10
+					input(type="email", name="email",placeholder="Email",disabled=hasProvider,
+					required,value="#{user.email}")#email.form-control
+
+			if hasProvider
+				.form-group
+					label(for="provider").control-label.col-xs-2 Provider
+					.col-xs-10
+						input(type="text", name="provider",placeholder="#{user.provider}",disabled,
+						required,value="#{user.provider}")#firstname.form-control
+			else
+				.form-group
+					label(for="password").control-label.col-xs-2 Password
+					.col-xs-10
+						input(type="password", name="password",placeholder="Password",
+						,pattern=".{5,10}", title="5 to 10 characters")#password.form-control
+
+				.form-group
+					label(for="cpassword").control-label.col-xs-2 Confirm Password
+					.col-xs-10
+						input(type="password", name="cpassword",placeholder="Password",
+						,required,pattern=".{5,10}", title="5 to 10 characters")#cpassword.form-control
+
+
+				.form-group
+					.col-xs-offset-2.col-xs-10
+						input(type="submit",value="Update Profile")#btn-signup.btn.btn-primary
+
+
+block scripts
+	script(src="/js/profile.js")
