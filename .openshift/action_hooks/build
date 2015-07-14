@@ -1,5 +1,4 @@
 #!/bin/bash
-
 if [ ! -d $OPENSHIFT_NODEJS_DIR/node_modules/bower ]
 then
     cd $OPENSHIFT_NODEJS_DIR
@@ -9,3 +8,5 @@ fi
 cd $OPENSHIFT_HOMEDIR/app-root/repo
 HOME=$OPENSHIFT_REPO_DIR bower install
 cd $OPENSHIFT_HOMEDIR
+
+
