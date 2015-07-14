@@ -16,7 +16,7 @@ module.exports.configure  = function (config) {
     winston.info('Configuring openshift deployment');
     winston.info('Application %s on %s', process.env.OPENSHIFT_GEAR_NAME, process.env.OPENSHIFT_GEAR_DNS );
     winston.info('Node.js engine is %s', process.env.OPENSHIFT_NODEJS_VERSION);
-    winston.info('Memory limit is %s',  OPENSHIFT_GEAR_MEMORY_MB);
+    winston.info('Memory limit is %s',  process.env.OPENSHIFT_GEAR_MEMORY_MB);
 
     config.port = process.env.OPENSHIFT_NODEJS_PORT;
 
