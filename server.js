@@ -23,7 +23,13 @@ app.set('port', config.port);
 
 var server = http.createServer(app);
 
-server.listen(config.port);
+if (config.ip){
+  winston.info("listen on port %s IP %s",config.port, config.ip)
+  server.listen(config.port, config.ip);
+} else {
+  winston.info("listen on port %s",config.port)
+  server.listen(config.port);
+}
 
 server.on('error', onError);
 server.on('listening', onListening);
