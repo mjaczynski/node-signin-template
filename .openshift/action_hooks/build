@@ -8,5 +8,4 @@ fi
 
 cd $OPENSHIFT_HOMEDIR/app-root/repo
 HOME=$OPENSHIFT_REPO_DIR bower install
-
 cd $OPENSHIFT_HOMEDIR
