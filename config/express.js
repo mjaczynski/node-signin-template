@@ -15,7 +15,7 @@ var config = require('./config'),
 	connectMongo = require('connect-mongo'),
 	expressValidator = require('express-validator');
 
-module.exports = function() {
+module.exports = function(db) {
 
 	var app = express();
 
@@ -41,7 +41,7 @@ module.exports = function() {
 		secret: config.sessionSecret,
 		saveUninitialized: true,
 		resave: true,
-		store : new MongoSessionStore({ url: config.db })
+		store : new MongoSessionStore({  url: config.db })
 	}));
 
     winston.info("Using passport session");
@@ -64,7 +64,6 @@ module.exports = function() {
 	app.set('view engine', 'jade');
 
 	app.use(express.static('./public'));
-	app.use('/bower_components',  express.static('./bower_components'));
 
 	app.use(function(req, res, next) {
 		var err = new Error('Not Found');

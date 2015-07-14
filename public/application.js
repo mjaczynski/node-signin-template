@@ -1,8 +1,8 @@
 'use strict';
 
-var mainApplicationModuleName = 'sudoku';
+var mainApplicationModuleName = 'signin';
 
-var mainApplicationModule = angular.module(mainApplicationModuleName, ['ngRoute', 'sudokus']);
+var mainApplicationModule = angular.module(mainApplicationModuleName, ['ngRoute']);
 
 // Configure the hashbang URLs using the $locationProvider services 
 mainApplicationModule.config(['$locationProvider',

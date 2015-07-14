@@ -13,12 +13,9 @@ var config = require('./config/config'),
     http = require('http');
 
 
+var db = mongoose();
 
-// TODO: share DB connection
-
-mongoose();
-
-var app = express();
+var app = express(db);
 
 passport();
 
@@ -36,9 +33,9 @@ function onError(error) {
     throw error;
   }
 
-  var bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
+  var bind = typeof config.port === 'string'
+    ? 'Pipe ' + config.port
+    : 'Port ' + config.port;
 
   switch (error.code) {
     case 'EACCES':

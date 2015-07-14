@@ -2,12 +2,20 @@
 
 var winston = require('winston');
 
-var envname = 'local';
+var cloudfoundry = require('./env/cloudfoundry'),
+    openshift = require('./env/openshift'),
+    local = require('./env/local'),
+    config = require('./env/defaults');
 
-if (process.env.VCAP_SERVICES){
-    envname = 'bluemix';
+var env;
+if (cloudfoundry.detect()){
+    env = cloudfoundry;
+} else if (openshift.detect()){
+    env = openshift
+} else {
+    env = local;
 }
 
-winston.info('Setting config to %s',envname);
+module.exports=env.configure(config);
 
-module.exports = require('./env/'+envname);
+
