@@ -1,0 +1,150 @@
+
+<section ng-controller="RegisterController">
+    <div  class="well span4">
+        <form name ="register" ng-submit="submit()"  class="form-horizontal" novalidate>
+            <div class="form-group">
+                <div class="col-xs-offset-2 col-xs-10">
+                    <legend>Register</legend>
+                </div>
+            </div>
+
+            <div ng-repeat="error in errors">
+                <div class="alert alert-danger animated fadeIn">{{error.msg}}</div>
+            </div>
+
+            <div class="form-group">
+                <label for="firstname" class="control-label col-xs-2">First name</label>
+
+                <div class="col-xs-10"
+                     ng-class="{'has-error': register.firstname.$touched && register.firstname.$invalid}" >
+                    <input type="text" name="firstname" placeholder="Your first name (required)" required
+                           id="firstname" class="form-control" ng-model="user.firstname"/>
+                    <div ng-messages="register.firstname.$error" class="error-messages"
+                         ng-show="register.firstname.$touched && register.firstname.$invalid">
+                        <div ng-message="required">The field is required.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="lastname" class="control-label col-xs-2">Last name</label>
+
+                <div class="col-xs-10"
+                     ng-class="{'has-error': register.lastname.$touched && register.lastname.$invalid}">
+                    <input type="text" name="lastname" placeholder="Your last name (required)" required
+                            id="lastname" class="form-control" ng-model="user.lastname"/>
+                    <div ng-messages="register.lastname.$error" class="error-messages"
+                         ng-show="register.lastname.$touched && register.lastname.$invalid">
+                        <div ng-message="required">The field is required.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="username" class="control-label col-xs-2">Username</label>
+
+                <div class="col-xs-10"
+                     ng-class="{'has-error': register.username.$touched && register.username.$invalid}">
+                    <input type="text" name="username" placeholder="Choose a username (required)" required
+                          id="username" class="form-control"
+                           ng-model="user.username"
+                           ng-minlength="8" ng-maxlength="50"
+                           username-validator/>
+                    <div ng-messages="register.username.$error" class="error-messages"
+                         ng-show="register.username.$touched && register.username.$invalid">
+                        <div ng-message="required">The field is required</div>
+                        <div ng-message-exp="['minlength', 'maxlength']">
+                            Your username must be between 8 and 50 characters long.
+                        </div>
+                        <div ng-message="username">Username is already taken.</div>
+                    </div>
+                    <div ng-messages="register.username.$pending" class="validation-pending">
+                        <div ng-message="username">Checking username availability...</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="control-label col-xs-2">Password</label>
+
+                <div class="col-xs-10"
+                     ng-class="{'has-error': register.password.$touched && register.password.$invalid}">
+                    <input type="password" name="password" placeholder="Password (required)" required
+                           id="password" class="form-control"
+                           ng-model="user.password" password-characters-validator
+                           minlength="8" maxlength="15"/>
+                    <div ng-messages="register.password.$error" class="error-messages"
+                         ng-show="register.password.$touched && register.password.$invalid">
+                        <div ng-message="required">The field is required.</div>
+                        <div ng-message-exp="['minlength', 'maxlength', 'password-characters']">
+                            Your password must consist of 8 to 20 characters,
+                            with at least a special character, a number and an uppercase letter.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="cpassword" class="control-label col-xs-2">Confirm Password</label>
+
+                <div class="col-xs-10"
+                     ng-class="{'has-error': register.cpassword.$touched && register.cpassword.$invalid}">
+                    <input type="password" name="cpassword" placeholder="Retype your password (required)"
+                           required id="cpassword" class="form-control"
+                           ng-model="user.cpassword" match-validator="user.password"/>
+                    <div ng-messages="register.cpassword.$error" class="error-messages"
+                         ng-show="register.cpassword.$touched && register.cpassword.$invalid">
+                        <div ng-message="required">The field is required.</div>
+                        <div ng-message="match">This password does not match.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="control-label col-xs-2">Email</label>
+
+                <div class="col-xs-10"
+                     ng-class="{'has-error': register.email.$touched && register.email.$invalid}">
+                    <input type="email" name="email" placeholder="Email address (required)" required id="email"
+                           class="form-control" ng-model="user.email"/>
+
+                    <div ng-messages="register.email.$error" class="error-messages"
+                         ng-show="register.email.$touched && register.email.$invalid">
+                        <div ng-message="required">The field is required.</div>
+                        <div ng-message="email">The email address is not valid.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="cemail" class="control-label col-xs-2">Confirm Email</label>
+
+                <div class="col-xs-10"
+                     ng-class="{'has-error': register.cemail.$touched && register.cemail.$invalid}">
+                    <input type="email" name="cemail" placeholder="Retype your email address (required)" required id="cemail"
+                           class="form-control" ng-model="user.cemail"
+                           match-validator="user.email"/>
+                    <div ng-messages="register.cemail.$error" class="error-messages"
+                         ng-show="register.cemail.$touched && register.cemail.$invalid">
+                        <div ng-message="required">The field is required.</div>
+                        <div ng-message="email">The email address is not valid.</div>
+                        <div ng-message="match">This email does not match.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-xs-offset-2 col-xs-10">
+                    <input type="submit" value="Create New Account" class="btn btn-primary"
+                           ng-disabled="register.$invalid || register.$pending" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-xs-offset-2 col-xs-10">
+                    <p>Already have an account? &nbsp;<a href="/#!/login">Log in</a></p>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

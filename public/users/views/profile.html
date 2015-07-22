@@ -1,0 +1,101 @@
+
+<section ng-controller="ProfileController">
+    <div  class="well span4">
+        <form name="form" ng-submit="submit()"  class="form-horizontal" ng-if="initialized">
+            <div class="form-group">
+                <div class="col-xs-offset-2 col-xs-10">
+                    <legend>Profile</legend>
+                </div>
+            </div>
+
+            <div ng-repeat="error in errors">
+                <div class="alert alert-danger animated fadeIn">{{error.msg}}</div>
+            </div>
+
+            <div class="form-group">
+                <label for="firstname" class="control-label col-xs-2">First name</label>
+
+                <div class="col-xs-10"
+                     ng-class="{'has-error': form.firstname.$invalid}" >
+                    <input type="text" name="firstname" placeholder="Your first name (required)" required
+                           id="firstname" class="form-control" ng-model="user.firstname"/>
+                    <div ng-messages="form.firstname.$error" class="error-messages"
+                         ng-show="form.firstname.$invalid">
+                        <div ng-message="required">The field is required.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="lastname" class="control-label col-xs-2">Last name</label>
+
+                <div class="col-xs-10"
+                     ng-class="{'has-error': form.lastname.$invalid}">
+                    <input type="text" name="lastname" placeholder="Your last name (required)" required
+                           id="lastname" class="form-control" ng-model="user.lastname"/>
+                    <div ng-messages="form.lastname.$error" class="error-messages"
+                         ng-show="form.lastname.$invalid">
+                        <div ng-message="required">The field is required.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="username" class="control-label col-xs-2">Username</label>
+
+                <div class="col-xs-10">
+                    <input type="text" name="username"  disabled
+                           id="username" class="form-control"
+                           ng-model="user.username" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="control-label col-xs-2">Email</label>
+
+                <div class="col-xs-10"
+                     ng-class="{'has-error': form.email.$invalid}">
+                    <input type="email" name="email" placeholder="Email address (required)" required id="email"
+                           class="form-control" ng-model="user.email"/>
+
+                    <div ng-messages="form.email.$error" class="error-messages"
+                         ng-show="form.email.$invalid">
+                        <div ng-message="required">The field is required.</div>
+                        <div ng-message="email">The email address is not valid.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="cemail" class="control-label col-xs-2">Confirm Email</label>
+
+                <div class="col-xs-10"
+                     ng-class="{'has-error': form.cemail.$invalid}">
+                    <input type="email" name="cemail" placeholder="Retype your email address (required)" required id="cemail"
+                           class="form-control" ng-model="user.cemail"
+                           match-validator="user.email"/>
+                    <div ng-messages="form.cemail.$error" class="error-messages"
+                         ng-show="form.cemail.$invalid">
+                        <div ng-message="required">The field is required.</div>
+                        <div ng-message="email">The email address is not valid.</div>
+                        <div ng-message="match">This email does not match.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-xs-offset-2 col-xs-10">
+                    <input type="submit" value="Update" class="btn btn-primary"
+                           ng-disabled="form.$invalid || !form.$dirty"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-xs-offset-2 col-xs-10">
+                    <p><a href="/#!/changepassword">Change password</a></p>
+                </div>
+            </div>
+            
+        </form>
+    </div>
+</section>

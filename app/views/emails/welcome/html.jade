@@ -1,0 +1,17 @@
+doctype html
+html
+    head
+        title= Welcome
+
+body
+    h2 Welcome #{user.firstname} #{user.lastname},
+
+    P
+        | Thank you for registering to #{config.name}.
+        | Your username is '#{user.username}'.
+
+    P
+        | Regards
+
+    P
+        | The #{config.name} team.

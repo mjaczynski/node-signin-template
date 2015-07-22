@@ -1,0 +1,41 @@
+
+<div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" data-toggle="collapse" data-target=".navbar-collapse" class=
+                "navbar-toggle">
+            <span class="sr-only">Toggle navigation</span>
+        </button><a href="/" class="navbar-brand">User Demo</a>
+    </div>
+
+    <div class="navbar-collapse collapse" ng-if="!user">
+        <ul class="nav navbar-nav"></ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="/#!/register">Register</a></li>
+            <li><a href="/#!/login">Log In</a></li>
+        </ul>
+    </div>
+
+
+    <div class="navbar-collapse collapse" ng-if="user">
+        <ul class="nav navbar-nav"></ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown" >
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    <i class="fa fa-user fa-fw"></i> {{user.firstname}} {{user.lastname}}  <i class="fa fa-caret-down"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                    <li><a href="/#!/profile"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    </li>
+                    <li class="divider"></li>
+                    <li><a href="/users/util/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                    </li>
+                </ul>
+                <!-- /.dropdown-user -->
+            </li>
+        </ul>
+    </div>
+    
+</div>
+
+
+

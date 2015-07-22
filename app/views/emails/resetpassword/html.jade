@@ -1,0 +1,18 @@
+doctype html
+html
+    head
+        title= "Reset password"
+
+body
+    h2 Hello #{user.firstname} #{user.lastname},
+
+    P
+        | We have received a request to reset your password of your username '#{user.username}'.
+        | To reset your password, click on this <a href="#{resetURL}"> link </a>
+        | and follow the instructions.
+
+    P
+        | Regards
+
+    P
+        | The #{config.name} team.

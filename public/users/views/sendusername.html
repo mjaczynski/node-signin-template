@@ -1,0 +1,48 @@
+<section ng-controller="SendUsernameController">
+    <div class="well span4">
+        <form name="form" ng-submit="submit()" class="form-horizontal" novalidate>
+            <div class="form-group">
+                <div class="col-xs-offset-2 col-xs-10">
+                    <legend>Recover Your Username</legend>
+                </div>
+            </div>
+
+            <div ng-repeat="error in errors">
+                <div class="alert alert-danger animated fadeIn">{{error.msg}}</div>
+            </div>
+            <div ng-if="sucess" class="alert alert-success animated fadeIn">
+                An email was sent with your username.
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="control-label col-xs-2">Email</label>
+
+                <div class="col-xs-10"
+                     ng-class="{'has-error': register.email.$touched && register.email.$invalid}">
+                    <input type="email" name="email" placeholder="Email address (required)" required id="email"
+                           class="form-control" ng-model="user.email"/>
+
+                    <div ng-messages="register.email.$error" class="error-messages"
+                         ng-show="register.email.$touched && register.email.$invalid">
+                        <div ng-message="required">The field is required.</div>
+                        <div ng-message="email">The email address is not valid.</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-xs-offset-2 col-xs-10">
+                    <input type="submit" value="Send Email"
+                           class="btn btn-primary"
+                           ng-disabled="form.$invalid" />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-xs-offset-2 col-xs-10">
+                    <p>An email will be sent with the list of usernames associated with the provided email address.</p>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

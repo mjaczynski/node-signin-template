@@ -2,24 +2,47 @@ doctype html
 html
   head
     title= title
+    
     link(rel='styleSheet', href='/lib/bootstrap/dist/css/bootstrap.css')
     link(rel='styleSheet', href='/lib/bootstrap/dist/css/bootstrap-theme.css')
     link(rel='styleSheet', href='/lib/bootstrap-social/bootstrap-social.css')
     link(rel='styleSheet', href='/lib/font-awesome/css/font-awesome.css')
     link(rel='stylesheet', href='/css/style.css')
+    if user
+      script.
+        window.user = {firstname : '#{user.firstname}', lastname : '#{user.lastname}'} ;
+
   body
 
-    include partials/header
-
-    .container
-      include partials/flash
-      block content
+    div#wrapper
+      nav.navbar.navbar-default.navbar-fixed-top.container-fluid(ng-include="'/partials/header.html'")
+            
+      div#page-wrapper
+        div.container-fluid
+          div.row
+            div.col-lg-12
+              div.page-container
+                block content
 
     script(src="/lib/jquery/dist/jquery.js")
     script(src="/lib/bootstrap/dist/js/bootstrap.js")
 
     script(src='/lib/angular/angular.js')
+    script(src='/lib/autofill-event/src/autofill-event.js')
     script(src='/lib/angular-route/angular-route.js')
+    script(src='/lib/angular-messages/angular-messages.js')
+    script(src='/lib/angular-animate/angular-animate.js')
+
+    script(src='/users/users.module.js')
+    script(src='/users/controllers/login.controller.js')
+    script(src='/users/controllers/register.controller.js')
+    script(src='/users/controllers/profile.controller.js')
+    script(src='/users/controllers/sendreset.controller.js')
+    script(src='/users/controllers/sendusername.controller.js')
+    script(src='/users/controllers/changepassword.controller.js')
+    script(src='/users/controllers/reset.controller.js')
+    script(src='/users/routes/users.routes.js')
+    script(src='/users/services/profile.service.js')
 
     script(src="/application.js")
 

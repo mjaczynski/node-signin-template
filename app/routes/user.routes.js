@@ -9,52 +9,55 @@ var config = require('../../config/config'),
 
 var router = express.Router();
 
-router.route('/signin')
-    .get(users.getSignin)
-    .post(passport.authenticate('local', {
-        successRedirect: '/',
-        failureRedirect: '/signin',
-    }));
+router.route('/users/util/login')
+    .post(passport.authenticate('local'),
+          users.getProfile);
 
-router.route('/signup')
-    .get(users.getSignup)
-    .post(users.postSignup);
+router.route('/users/util/register')
+    .post(users.postRegister);
 
-router.route('/logout')
+router.route('/users/util/validate')
+    .get(users.validateUsername);
+
+router.route('/users/util/logout')
     .get(users.getLogout);
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated())
     return next();
-  res.redirect('/');
+  res.status(401).send();
 }
 
-router.use('/profile',isLoggedIn);
+router.use('/users/me',isLoggedIn);
 
-router.route('/profile')
+router.route('/users/me/profile')
     .get(users.getProfile)
     .post(users.postProfile);
 
-router.route('/sendreset')
-    .get(users.getSendreset)
+router.route('/users/me/password')
+    .post(users.postPassword);
+
+router.route('/users/util/sendreset')
     .post(users.postSendreset);
 
-router.route('/reset')
-    .get(users.getReset)
+router.route('/users/util/sendusername')
+    .post(users.postSendusername);
+
+router.route('/users/util/reset')
     .post(users.postReset);
 
-router.route('/auth/google').get(passport.authenticate('google', {
-    scope: [
-        'https://www.googleapis.com/auth/userinfo.profile',
-        'https://www.googleapis.com/auth/userinfo.email'
-    ],
-    failureRedirect: '/signin'
-}));
-
-router.route('/auth/google/callback').get(passport.authenticate('google', {
-    failureRedirect: '/signin',
-    successRedirect: '/'
-}));
+//router.route('/auth/google').get(passport.authenticate('google', {
+//    scope: [
+//        'https://www.googleapis.com/auth/userinfo.profile',
+//        'https://www.googleapis.com/auth/userinfo.email'
+//    ],
+//    failureRedirect: '/signin'
+//}));
+//
+//router.route('/auth/google/callback').get(passport.authenticate('google', {
+//    failureRedirect: '/signin',
+//    successRedirect: '/'
+//}));
 
 module.exports = router;
 

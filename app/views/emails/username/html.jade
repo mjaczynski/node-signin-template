@@ -1,0 +1,23 @@
+doctype html
+html
+    head
+        title= "Recover username"
+
+body
+    h2 Hello,
+
+    P
+        | We have received a request to recover your username.
+        if users.length==1
+            | The username associated with this email address is '#{users[0].username}'
+        else
+            | The usernames associated with this email address are:
+            ul
+                each user, index in users
+                    li= user.username
+
+    P
+        | Regards
+
+    P
+        | The #{config.name} team.

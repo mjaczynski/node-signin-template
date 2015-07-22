@@ -14,10 +14,13 @@
     "tests"
   ],
   "dependencies": {
-    "bootstrap": "~3.3.4",
-    "jquery": "~2.1.4",
-    "bootstrap-social": "~4.9.0",
-    "angular": "~1.4.0",
-    "angular-route": "~1.4.0"
+    "bootstrap": "latest",
+    "jquery": "latest",
+    "bootstrap-social": "latest",
+    "angular": "latest",
+    "angular-route": "latest",
+    "angular-messages": "latest",
+    "autofill-event": "latest",
+    "angular-animate": "latest"
   }
 }

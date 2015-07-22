@@ -1,0 +1,16 @@
+| Hello,
+| 
+| We have received a request to recover your username.
+if users.length==1
+    | The username associated with this email address is '#{users[0].username}'. 
+else
+    | The usernames associated with this email address are:
+    | 
+    each user, index in users
+       |   . #{user.username}
+       | 
+
+| 
+| Regards,
+| 
+| The #{config.name} team.

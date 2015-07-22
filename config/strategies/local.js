@@ -27,7 +27,6 @@ module.exports = function() {
 					}
 
 					return done(null, user);
-				})
-				.onReject(done)
+				}).onReject(done)
 		}));
 };

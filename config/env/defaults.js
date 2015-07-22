@@ -2,6 +2,7 @@
 
 // Returns common defaults for configuration
 module.exports = {
+    name : "User Demo",
     db: 'mongodb://localhost/users',
     sessionSecret: 'secret',
     dev : true,
