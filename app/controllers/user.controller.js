@@ -149,7 +149,7 @@ module.exports.postSendreset=function (req, res, next) {
         user.generateResetKey();
         return user.save()
             .then(function (user) {
-              var resetURL = req.protocol + '://' + req.get('host') + "/#!/reset?key=" + user.resetkey;
+              var resetURL = req.protocol + '://' + req.get('host') + "/#!/reset/" + user.resetkey;
               return email.sendPasswordReset(user,resetURL);
             });
       })

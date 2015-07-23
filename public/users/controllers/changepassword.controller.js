@@ -1,14 +1,13 @@
 'use strict';
 
-angular.module('users').controller('ChangePasswordController', ['$scope', '$routeParams', '$location', '$http',
-    function($scope, $routeParams, $location, $http) {
+angular.module('users').controller('ChangePasswordController', ['$scope', '$http',
+    function($scope,  $http) {
 
         $scope.user = {};
         $scope.errors =[];
         $scope.success = false;
 
         $scope.submit = function() {
-            var params = $location.search();
             $http.post('/users/me/password', {
                 oldpassword: $scope.user.oldpassword,
                 password: $scope.user.password,

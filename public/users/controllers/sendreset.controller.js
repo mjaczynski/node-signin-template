@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('SendResetController', ['$scope', '$routeParams', '$location', '$http',
-    function($scope, $routeParams, $location, $http) {
+angular.module('users').controller('SendResetController', ['$scope', '$location', '$http',
+    function($scope, $location, $http) {
 
         $scope.user = {};
         $scope.errors = [];

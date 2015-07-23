@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('ProfileController', ['$scope', '$rootScope', '$routeParams', '$location', '$http', 'Profile',
-    function($scope, $rootScope, $routeParams, $location, $http, Profile) {
+angular.module('users').controller('ProfileController', ['$scope', '$rootScope', '$location', '$http', 'Profile',
+    function($scope, $rootScope, $location, $http, Profile) {
 
         $scope.user = {};
         $scope.errors = [];
@@ -18,7 +18,7 @@ angular.module('users').controller('ProfileController', ['$scope', '$rootScope',
             $http.post('/users/me/profile', {
                 firstname : $scope.user.firstname,
                 lastname : $scope.user.lastname,
-                email : $scope.user.email
+                email : $scope.user.email$
             }).success(function(response) {
                 $scope.errors = [];
                 $rootScope.user = $scope.user;

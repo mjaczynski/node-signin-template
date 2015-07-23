@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('ResetController', ['$scope', '$routeParams', '$location', '$http',
-    function($scope, $routeParams, $location, $http) {
+angular.module('users').controller('ResetController', ['$scope', '$location', '$http', '$stateParams',
+    function($scope, $location, $http, $stateParams) {
 
         console.log("ResetController initialized");
         $scope.user = {};
@@ -9,10 +9,9 @@ angular.module('users').controller('ResetController', ['$scope', '$routeParams',
         $scope.success = false;
 
         $scope.submit = function() {
-            var params = $location.search();
             $http.post('/users/util/reset', {
                 password: $scope.user.password,
-                key : params.key
+                key : $stateParams.key
             }).success(function(response) {
                 $scope.errors = [];
                 $scope.user = {};

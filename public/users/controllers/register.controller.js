@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('RegisterController', ['$scope', '$rootScope', '$routeParams', '$location', '$http',
-    function($scope, $routeParams, $location, $http) {
+angular.module('users').controller('RegisterController', ['$scope', '$rootScope', '$location', '$http',
+    function($scope, $location, $http) {
 
         $scope.user = {};
         $scope.errors = [];

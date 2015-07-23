@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('users').controller('LoginController', ['$scope', '$rootScope', '$routeParams', '$location', '$http',
-    function($scope, $rootScope, $routeParams, $location, $http) {
+angular.module('users').controller('LoginController', ['$scope', '$rootScope', '$location', '$http', '$state',
+    function($scope, $rootScope, $location, $http, $state) {
 
         $scope.user = {};
 
@@ -14,7 +14,7 @@ angular.module('users').controller('LoginController', ['$scope', '$rootScope', '
             }).success(function(data) {
                 $scope.errors = [];
                 $rootScope.user = data;
-                $location.url('/');
+                $state.go('main');
             }).error(function(data, status, headers, config) {
                 if (status==401){
                     $scope.errors = [{

@@ -21,6 +21,8 @@
     "angular-route": "latest",
     "angular-messages": "latest",
     "autofill-event": "latest",
-    "angular-animate": "latest"
+    "angular-animate": "latest",
+    "font-awesome": "latest",
+    "angular-ui-router": "latest"
   }
 }

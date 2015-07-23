@@ -2,7 +2,7 @@
 
 var mainApplicationModuleName = 'signin';
 
-var mainApplicationModule = angular.module(mainApplicationModuleName, ['ngRoute','ngMessages','users']);
+var mainApplicationModule = angular.module(mainApplicationModuleName, ['ui.router','ngMessages', 'ngAnimate','main','users']);
 
 // Configure the hashbang URLs using the $locationProvider services 
 mainApplicationModule.config(['$locationProvider',

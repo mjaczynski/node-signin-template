@@ -1,20 +1,27 @@
 'use strict';
 
-angular.module('users').config(['$routeProvider',
-	function($routeProvider) {
-		$routeProvider.when('/login', {
+angular.module('users').config(['$stateProvider',
+	function($stateProvider) {
+		$stateProvider.state('login', { 
+			url :'/login', 
 			templateUrl: 'users/views/login.html'
-		}).when('/register', {
+		}).state('register', {
+			url :'/register',
 			templateUrl: 'users/views/register.html'
-		}).when('/profile', {
+		}).state('profile', { 
+			url :'/profile', 
 			templateUrl: 'users/views/profile.html'
-		}).when('/sendreset', {
+		}).state('sendreset', { 
+			url :'/sendreset', 
 			templateUrl: 'users/views/sendreset.html'
-		}).when('/reset', {
+		}).state('reset', { 
+			url :'/reset/:key', 
 			templateUrl: 'users/views/reset.html'
-		}).when('/sendusername', {
+		}).state('sendusername', { 
+			url :'/sendusername', 
 			templateUrl: 'users/views/sendusername.html'
-		}).when('/changepassword', {
+		}).state('changepassword',{ 
+			url :'/changepassword', 
 			templateUrl: 'users/views/changepassword.html'
 		});
 	}

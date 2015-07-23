@@ -10,8 +10,8 @@
     <div class="navbar-collapse collapse" ng-if="!user">
         <ul class="nav navbar-nav"></ul>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="/#!/register">Register</a></li>
-            <li><a href="/#!/login">Log In</a></li>
+            <li><a ui-sref="register">Register</a></li>
+            <li><a ui-sref="login">Log In</a></li>
         </ul>
     </div>
 
@@ -24,7 +24,7 @@
                     <i class="fa fa-user fa-fw"></i> {{user.firstname}} {{user.lastname}}  <i class="fa fa-caret-down"></i>
                 </a>
                 <ul class="dropdown-menu dropdown-user">
-                    <li><a href="/#!/profile"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                    <li><a ui-sref="profile"><i class="fa fa-user fa-fw"></i> User Profile</a>
                     </li>
                     <li class="divider"></li>
                     <li><a href="/users/util/logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
